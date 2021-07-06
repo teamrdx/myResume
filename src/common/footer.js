@@ -10,9 +10,9 @@ const Footer = () => {
         <div style={{ fontFamily: "var(--family)", color: "var(--text)" }}>
           © {new Date().getFullYear()} Biplav Dahal
         </div>
-        <div style={{ width: "120px" }}>
+        <Image>
           <ImageGatsby src="footer-logo.png" alt="Biplav Dahal" />
-        </div>
+        </Image>
         <div style={{ fontFamily: "var(--family)" }}>
           <a
             style={{ textDecoration: "none", color: "var(--text)" }}
@@ -37,4 +37,11 @@ const Foot = styled.footer`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+`;
+
+const Image = styled.div`
+  width: 120px;
+  @media (max-width: 500px) {
+    width: 90px;
+  }
 `;
