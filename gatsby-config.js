@@ -2,6 +2,16 @@ module.exports = {
   siteMetadata: {
     siteUrl: "https://www.yourdomain.tld",
     title: "Resume",
+    description: "Biplav Dahal Resume",
+    author: "Biplav Dahal",
+    keywords: [
+      "Biplav",
+      "Frontend",
+      "Backend",
+      "Developer",
+      "Berlin",
+      "Germany",
+    ],
   },
   plugins: [
     "gatsby-plugin-styled-components",
