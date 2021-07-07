@@ -108,9 +108,9 @@ const Head = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-top: 3rem;
+  margin: 0.9rem;
   max-width: 1200px;
-  margin-inline: auto;
+
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
     rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
   padding: 3rem;

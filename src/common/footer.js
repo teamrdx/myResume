@@ -37,6 +37,9 @@ const Foot = styled.footer`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  @media (max-width: 420px) {
+    flex-direction: column-reverse;
+  } ;
 `;
 
 const Image = styled.div`
