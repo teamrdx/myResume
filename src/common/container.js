@@ -4,7 +4,7 @@ export const Container = styled.div`
   max-width: 1200px;
   width: 100%;
   margin-inline: auto;
-  padding: 0 1.5rem;
+  padding: ${(props) => (props.padded ? " 0 1.5rem" : props.padding)};
 `;
 
 export const ContainerColumn = styled.div`
@@ -14,7 +14,7 @@ export const ContainerColumn = styled.div`
   padding: 0 1.5rem;
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: ${(props) => (props.gap ? props.gap : " 9rem")};
+  gap: ${(props) => (props.gap ? props.gap : " 3rem")};
   justify-items: ${(props) =>
     props.justifyItems ? props.justifyItems : "center"};
   align-items: ${(props) => (props.alignItems ? props.alignItems : "center")};

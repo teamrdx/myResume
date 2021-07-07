@@ -1,4 +1,7 @@
 module.exports = {
+  flags: {
+    FUNCTIONS: true,
+  },
   siteMetadata: {
     siteUrl: "https://www.yourdomain.tld",
     title: "Resume",

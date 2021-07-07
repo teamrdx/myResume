@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { BsBookmarks, BsStar } from "react-icons/bs";
 import { Text } from "./text";
 
-const Card = ({ work, position, duration, description, link }) => {
+const Card = ({ work, position, duration, location, description, link }) => {
   return (
     <Content>
       <IconText1
@@ -11,20 +11,34 @@ const Card = ({ work, position, duration, description, link }) => {
         text={work}
         link={link}
       />
-
       <Text as="h4" fontWeight="var(--bold)">
         {position}
       </Text>
-      <Text
-        as="p"
-        fontWeight="var(--light)"
-        fontSize="var(--sm)"
-        margin=".6rem 0"
-      >
-        {duration}
-      </Text>
-
-      <IconText2 icon={<BsStar color="var(--text)" />} text={description} />
+      <div>
+        <Text
+          as="p"
+          fontWeight="var(--light)"
+          fontSize="var(--sm)"
+          margin=".12rem 0"
+        >
+          {duration}
+        </Text>
+        <Text
+          as="p"
+          fontWeight="var(--light)"
+          fontSize="var(--xs)"
+          margin=".12rem 0 1.2rem"
+        >
+          {location}
+        </Text>
+      </div>
+      {description.map((item, index) => (
+        <IconText2
+          key={index}
+          icon={<BsStar color="var(--text)" />}
+          text={item}
+        />
+      ))}
     </Content>
   );
 };
@@ -67,11 +81,12 @@ const Container = styled.div`
   justify-content: flex-start;
   align-items: center;
   line-height: 1.3;
+  margin: 0.3rem 0;
 `;
 
 const Content = styled.div`
   margin: 0.9rem 0;
-  padding: 1.2rem;
+  padding: 1.2rem 1.2rem 3rem;
   border-radius: 0.6rem;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
 `;

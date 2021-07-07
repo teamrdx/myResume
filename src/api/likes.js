@@ -6,14 +6,10 @@ const Likes = async (req, res) => {
     try {
       const newLike = parseInt(req.body);
 
-      const oldLike = await LikeData.findById(process.env.MONGODB_ID).exec();
-
-      const totalLike = parseInt(oldLike.likes) + newLike;
-
       const update = await LikeData.findByIdAndUpdate(
         process.env.MONGODB_ID,
         {
-          likes: totalLike,
+          likes: newLike,
         },
         (error, success) => {
           if (error) {

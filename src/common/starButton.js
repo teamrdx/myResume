@@ -5,16 +5,34 @@ import { AiFillLike } from "react-icons/ai";
 
 const Star = () => {
   const [isClicked, setIsClicked] = useState(false);
-  const [likes, setLikes] = useState(0);
-  const [count, setCount] = useState(likes);
-  const [loading, setLoading] = useState(true);
+  const [count, setCount] = useState("loading");
 
-  const handleCount = () => {
+  const handleCount = async () => {
     if (isClicked) {
-      return setCount(count - 1);
+      setCount(count - 1);
+      console.log("minus", count);
+      await fetch("api/likes", {
+        method: "POST",
+        headers: {
+          "Content-Type": "text/plain",
+        },
+        body: count - 1,
+      })
+        // .then((response) => console.log(response))
+        .catch((err) => console.log(err));
     }
     if (!isClicked) {
-      return setCount(count + 1);
+      setCount(count + 1);
+      console.log("plus", count);
+      await fetch("api/likes", {
+        method: "POST",
+        headers: {
+          "Content-Type": "text/plain",
+        },
+        body: count + 1,
+      })
+        // .then((response) => console.log(response))
+        .catch((err) => console.log(err));
     }
   };
 
@@ -22,25 +40,13 @@ const Star = () => {
     async function fetchData() {
       await fetch("api/data")
         .then((response) => response.json())
-        .then((dbData) => setLikes(dbData[0].likes))
-        .then(() => setLoading(false))
+        .then((dbData) => setCount(dbData[0].likes))
         .catch((error) => console.log(error));
-      setCount(likes);
     }
     fetchData();
-  }, [likes]);
+  }, []);
 
-  useEffect(() => {
-    fetch("api/likes", {
-      method: "POST",
-      headers: {
-        "Content-Type": "text/plain",
-      },
-      body: count,
-    })
-      // .then((response) => console.log(response))
-      .catch((err) => console.log(err));
-  }, [count]);
+  useEffect(() => {}, [count]);
 
   return (
     <Holder>
@@ -56,7 +62,7 @@ const Star = () => {
           <StarText>{isClicked ? "Unlike" : "Like"}</StarText>
         </Container>
 
-        <Likes>{!loading && count} likes</Likes>
+        <Likes>{count} likes</Likes>
       </Content>
       {isClicked ? (
         <span style={{ color: "var(--green)", fontSize: "var(--sm)" }}>
